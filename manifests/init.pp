@@ -37,7 +37,7 @@ class kms_win (
 ){
 
   # parameter validation
-  unless is_domain_name($key_management_service_name) {
+  unless $key_management_service_name =~ Stdlib::Fqdn {
     fail('Class[kms_win] key_management_service_name parameter must be a valid rfc1035 domain name')
   }
   validate_re($key_management_service_port, '\d+', 'key_management_service_port parameter must be a number.')
