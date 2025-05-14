@@ -30,18 +30,19 @@
 #
 class kms_win (
 
-  $key_management_service_name = undef,
-  $key_management_service_port = '1688',
-  $attempt_activation = true,
+  Stdlib::Fqdn $key_management_service_name = undef,
+  Integer [1, 65535] $key_management_service_port = 1688,
+  Bollean $attempt_activation = true,
 
 ){
 
-  # parameter validation
-  unless $key_management_service_name =~ Stdlib::Fqdn {
-    fail('Class[kms_win] key_management_service_name parameter must be a valid rfc1035 domain name')
-  }
-  validate_re($key_management_service_port, '\d+', 'key_management_service_port parameter must be a number.')
-  validate_bool($attempt_activation)
+ ### below block is not required as the validation is done in class declaration 
+ # parameter validation
+ # unless $key_management_service_name =~ Stdlib::Fqdn {
+  #  fail('Class[kms_win] key_management_service_name parameter must be a valid rfc1035 domain name')
+  #}
+  #validate_re($key_management_service_port, '\d+', 'key_management_service_port parameter must be a number.')
+  #validate_bool($attempt_activation)
 
   registry_value { 'KeyManagementServiceName':
     ensure => present,
