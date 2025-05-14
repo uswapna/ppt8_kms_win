@@ -31,7 +31,7 @@
 class kms_win (
 
   Stdlib::Fqdn $key_management_service_name = undef,
-  Integer [1, 65535] $key_management_service_port = 1688,
+  Integer[1, 65535] $key_management_service_port = 1688,
   Bollean $attempt_activation = true,
 
 ){
